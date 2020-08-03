@@ -17,3 +17,12 @@ flex-direction: column;
 .form form input{
     margin-top: 10px;
 }
+.valid{
+    border:1px solid green;
+}
+.notValid{
+    border: 1px solid red;
+}
+.telephoneCheck label{
+    margin: 8px;
+}

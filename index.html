@@ -12,7 +12,9 @@
             <form class="forms" method="post" enctype="multipart/form-data">
                 <input type="text" name="FIO1" class="FIO" required>
                 <input type="date" name="date1" class="dates" required>
-                <input type="tel" name="tel1"class="tele" required>
+                <div class="telephoneCheck">
+                    <label for="tele">+7</label><input type="tel" name="tel1"class="tele" required>
+                </div>
                 <input type="submit" value="Отправить" class="btnOK">
             </form>
         </div>

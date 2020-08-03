@@ -10,6 +10,9 @@ if($inputJSON !== null){
     $fio = $arr[0];
     $date = $arr[1];
     $tel = $arr[2];
+    if($fio=="" && $date=="" && $tel==""){
+        die();
+    }
 }else{
     return false;
 }
