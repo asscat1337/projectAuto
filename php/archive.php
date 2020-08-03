@@ -10,8 +10,8 @@ if($inputJSON !== null){
     $fio = $result['data']['fio'];
     $date = $result['data']['date'];
     $tel = $result['data']['telephone'];
-    $filename = $result['data']['filename'];
-    $path = $result['data']['path'];
+    $filename = $result['path']['filename'];
+    $path = $result['path']['path'];
     $status = $result['selectedData']['status'];
 }else{
     return false;

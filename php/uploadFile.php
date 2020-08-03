@@ -10,8 +10,8 @@ if($_FILES['document']['error']==0){
     $uploadname=basename($_FILES['document']['name']);
     $destination = "../files/".basename($_FILES['document']['name']);
     move_uploaded_file($_FILES['document']['tmp_name'],$destination);
+    echo json_encode(array('filename'=>$uploadname,'path'=>$destination));
     mysqli_query($link,"INSERT into `files` (`id`,`filename`,`path`) VALUES (NULL,'$uploadname','$destination')");
-    echo "Ok";
 }else{
     echo 'error';
 }
