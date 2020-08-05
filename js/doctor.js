@@ -4,7 +4,15 @@ let status = document.querySelector('.status');
 
 let btnConfirm = document.querySelector('.btnConfirm');
 
+renderForm=(text)=>{
 
+  let div = document.createElement('div');   
+  doctorContent.insertAdjacentElement('beforebegin',div);
+  div.textContent = text;
+  setTimeout(()=>{
+      div.remove();
+  },1500);
+}
 
 window.addEventListener('DOMContentLoaded',(event)=>{
 
@@ -18,13 +26,22 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         })
         .then(response=>response.json())
         .then((data)=>{
-            let object = {data,selectedData};
+            let object = {data,selectedData,path};
             console.log(object);
+            if(path===undefined){
+                renderForm('Добавьте файл');
+            }else if(selectedData===undefined){
+                renderForm('Выберите статус')
+            }
             fetch(url='/php/archive.php',{
                 method:"POST",
                 body:JSON.stringify(object)
             })
             .then(data=>{
+                if(data.ok){
+                    renderForm('Запись добавлена');
+                    doctorContent.classList.add('added');
+                }
                 console.log(data)
                 console.log(selectedData)
             })
@@ -58,10 +75,9 @@ window.addEventListener('DOMContentLoaded',(event)=>{
 
     let forms = document.querySelector('.forms');
 
-        forms.insertAdjacentElement('beforeend',button);
+        forms.insertAdjacentElement('afterbegin',button);
         button.type='file';
         button.name = 'document';
-
 
     event.preventDefault();
     fetch(url='/php/doctorKT.php',{
@@ -86,15 +102,18 @@ window.addEventListener('DOMContentLoaded',(event)=>{
        informationPatient.insertAdjacentElement('afterbegin',divDate);
        informationPatient.insertAdjacentElement('afterbegin',divTel);
     })
-
+    let path;
     button.addEventListener('change',()=>{
         let oData = new FormData(forms);
         let upload = oData.files;
-        console.log(upload);
         oData.append('document',upload);
         fetch(url='/php/uploadFile.php',{
             method:'POST',
             body:oData
+        })
+        .then(response=>response.json())
+        .then(data=>{
+           path = data;
         })
         .catch(err=>console.error(err))
     })

@@ -10,7 +10,7 @@
 
     <div class="doctor__content">
         <div class="information__patient">
-            <?php
+        <?php
                 require_once '../php/connect.php';
                 $sql = mysqli_query($link,"SELECT * FROM `status`");
                 $row = mysqli_fetch_array($sql);

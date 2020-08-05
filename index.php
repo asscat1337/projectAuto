@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="form">
+            <form class="forms" method="post" enctype="multipart/form-data">
+                <input type="text" name="FIO1" class="FIO" required>
+                <input type="date" name="date1" class="dates" required>
+                <div class="telephoneCheck">
+                    <label for="tele">+7</label><input type="tel" name="tel1"class="tele" required>
+                </div>
+                <input type="submit" value="Отправить" class="btnOK">
+            </form>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
