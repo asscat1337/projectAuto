@@ -3,7 +3,7 @@ require_once 'connect.php';
 $sql = mysqli_query($link,"SELECT * from `user` WHERE `checked`=0 ORDER BY `users_id` DESC LIMIT 1");
 $row = mysqli_fetch_array($sql);
     if($row !==null){
-        $json = array("fio"=>$row['fio'],"date"=>$row['date'],"telephone"=>$row['telephone']);
+        $json = array("fio"=>$row['fio'],"date"=>$row['date'],"telephone"=>$row['telephone'],"id"=>$row['users_id']);
         echo json_encode($json);
         // echo "<div class=echo data-id=$row[users_id]>
         //     <div class=fio>$row[fio]</div>

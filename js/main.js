@@ -96,3 +96,4 @@ let buttonExit = document.querySelector('.buttonExit');
             location.reload();
             location.href="./auth/authPage.php";
         })
+        
