@@ -88,10 +88,14 @@ let procentCovid;
                         }
                     })
                 }else if(selectedValue=="Приемный покой"){
+                   let deleRange = document.querySelector('.rangValue');
+                   deleRange.remove();
                     procentCovid = {
                         "procent":0
                     }
                 }else if(selectedValue =="Здоров"){
+                    let deleRange = document.querySelector('.rangValue');
+                   deleRange.remove();
                     procentCovid = {
                         "procent":0
                     } 
@@ -176,7 +180,7 @@ let procentCovid;
             .then(data=>{
                 console.log(data)
                 if(data!==0){
-                    doctorContent.insertAdjacentHTML('beforeend',`<div class=information__patient></div>`)
+                    doctorContent.insertAdjacentHTML('beforeend',`<div class=information__patient data-id=${data.id}></div>`)
                     let informationPatient = document.querySelector('.information__patient');
                     informationPatient.insertAdjacentHTML('beforeend',`<div>
                     ${data.fio}
