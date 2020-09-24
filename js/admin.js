@@ -1,65 +1,55 @@
+let button = document.querySelector('.btn');
+let pass = document.querySelector('.pass');
+let login = document.querySelector('.login');
+let fio = document.querySelector('.fio');
+let form = document.querySelector('.form');
+let selected = document.querySelector('.selected');
 
-let btnOK = document.querySelector('.btnOK');
-let form = document.querySelector('.forms');
-
-
-renderText = (text)=>{
+const renderText = (text)=>{
     let body = document.querySelector('body');
     let div = document.createElement('div');
-    body.insertAdjacentElement('beforebegin',div);
+    body.append(div);
 
     div.textContent = text;
 
     setTimeout(()=>{
         div.remove();
-    },3000)
+    },1500)
 }
 
-let telephone = document.querySelector('.tele');
-
-telephone.addEventListener('input',(event)=>{
-    let val= telephone.value
-    console.log(val)
-    let isValid = event.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-
-    event.target.value = !isValid[2] ? isValid[1] :'(' + isValid[1] + ')' + isValid[2] + (isValid[3] ? '-' + isValid[3] : '') + (isValid[4] ? '-' + isValid[4] : '');
-})
-
-btnOK.addEventListener('click',(event)=>{
 
 
+button.addEventListener('click',(event)=>{
     event.preventDefault();
-
-    let fio = document.querySelector('.FIO').value;
-    let date = document.querySelector('.dates').value;
-    let tel = document.querySelector('.tele').value;
+    let selectedValue = selected.value
+    let passValue = pass.value;
+    let loginValue = login.value;
+    let fioValue = fio.value;
+    console.log(selectedValue);
+    
     let data = {
-        "fio":fio,
-        "date":date,
-        "tel":tel
-    } 
-    fetch(url = './php/addData.php',{
+        "password":passValue,
+        "login":loginValue,
+        "fio":fioValue,
+        "selected":selectedValue
+    }
+    
+    fetch(url="/php/regist.php",{
         method:'POST',
         headers:{
-            "Content-type":"application/x-www-form-urlencoded"
+            'Content-type':'application/json'
         },
         body:JSON.stringify(data)
-
     })
-    .then(res=>{
-        if(res.ok){
-            if(fio ==""&& date==""&&tel==""){
-                renderText('Заполните поля')
-            }else if(fio=="" || date==""||tel==""){
-                renderText('Не заполены все поля');
-            }else{
-                renderText('Пациент добавлен');
-            }
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.status){
+            renderText(data.status);
             form.reset();
         }
-    })
-    .catch(error=>console.error(error));
+    });
 })
+
 
 let buttonExit = document.querySelector('.buttonExit');
 		buttonExit.addEventListener('click',()=>{

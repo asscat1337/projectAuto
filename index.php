@@ -1,25 +1,22 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="content">
-        <div class="form">
-            <form class="forms" method="post" enctype="multipart/form-data">
-                <input type="text" name="FIO1" class="FIO" required>
-                <input type="date" name="date1" class="dates" required>
-                <div class="telephoneCheck">
-                    <label for="tele">+7</label><input type="tel" name="tel1"class="tele" required>
-                </div>
-                <input type="submit" value="Отправить" class="btnOK">
-            </form>
-        </div>
-    </div>
-    <script src="js/main.js"></script>
-</body>
-</html>
+<?php include('template/header.php');?>
+<?php include('template/menu.php');?>
+<?php
+    if($_SESSION['position']=="Ренген лаборант"){
+        include('template/laborant.php');
+    } if($_SESSION['position']=="Врач кт"){
+        include('template/doctor.php');
+    }
+    if($_SESSION['position']=="Врач пульмонолог"){
+        include('template/doctorPulmo.php');
+    }
+    if($_SESSION['position']=="admin"){
+        include('template/admin.php');
+    }
+    if($_SESSION['position']=="Оператор"){
+        include('template/op.php');
+    }
+    if($_SESSION['position']=="Приемный покой"){
+        include('template/priemOtd.php');
+    }
+?>
+<?php include('template/footer.php');

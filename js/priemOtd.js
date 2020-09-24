@@ -1,13 +1,4 @@
 
-
-// let link = document.createElement('a');
-// let btnDowload = document.createElement('button');
-// pulmoContent.insertAdjacentElement('beforeend',btnDowload);
-// btnDowload.insertAdjacentElement('beforeend',link);
-
-
-// link.textContent = 'Загрузить файл';
-
 renderText =(text)=>{
     let div = document.createElement('div');
     pulmoContent.insertAdjacentElement('beforebegin',div);
@@ -20,7 +11,7 @@ let  divFio,
      status;    
 window.addEventListener('DOMContentLoaded',()=>{
     setInterval(()=>{
-            fetch(url='./php/pulmoBack.php',{
+        fetch(url='./php/priemBack.php',{
             method:'POST',
             headers:{
                 'Content-type':'application/json'
@@ -41,8 +32,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                 console.log(signal.aborted);
             }else{
                 console.log(data);
-                let pulmoContent = document.querySelector('.pulmo__content');
-                pulmoContent.insertAdjacentHTML("beforebegin",data);
+                let priemContent = document.querySelector('.priem__content');
+                priemContent.insertAdjacentHTML("beforebegin",data);
                 let btnUpload = document.querySelector('.btnUpload');
     
     
@@ -50,14 +41,10 @@ window.addEventListener('DOMContentLoaded',()=>{
                     event.preventDefault();
             
                     let target = event && event.target || event.srcElement;
-                    window.location.href="../php/unloadFile.php?file="+target.innerHTML;
+                    window.location.href="./php/unloadFile.php?file="+target.innerHTML;
             })
             }
 })
     },10000)
  
 })
-let buttonExit = document.querySelector('.buttonExit');
-		buttonExit.addEventListener('click',()=>{
-			document.location.href = "./auth/authPage.php"
-		})

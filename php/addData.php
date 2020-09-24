@@ -2,7 +2,7 @@
 
 require_once 'connect.php';
 $inputJSON = file_get_contents('php://input');
-
+$dateAdded = date("d.m.y");
 if($inputJSON !== null){
     $result = json_decode($inputJSON,true);
     //$res = json_encode($result);
@@ -17,6 +17,7 @@ if($inputJSON !== null){
     return false;
 }
 
-    $sql = mysqli_query($link,"INSERT into `user`(`users_id`,fio,`date`,`telephone`,`checked`) VALUES(NULL,'".$fio."','".$date."','".$tel."',0)");
+    $sql = mysqli_query($link,"INSERT into `user`(`users_id`,fio,`date`,`telephone`,`checked`,`dateAdded`) VALUES(NULL,'".$fio."','".$date."','".$tel."',0,'".$dateAdded."')");
+    var_dump("INSERT into `user`(`users_id`,fio,`date`,`telephone`,`checked`,`dateAdded`) VALUES(NULL,'".$fio."','".$date."','".$tel."',0,'".$dateAdded."')");
 
 ?>
