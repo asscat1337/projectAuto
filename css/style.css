@@ -1,12 +1,17 @@
 body{
-    margin: 0;
+    margin: 0 0 0 320px; 
     padding: 0;
     box-sizing: border-box;
+    height: auto;
+    font-family: arial;
+    position: relative;
+    font-size: 14px;
 }
+
+h1 {font-size: 20px}
 .content{
-    display:flex;
+    padding: 30px;
     justify-content: center;
-    min-height: 100vh;
     align-items: center;
     flex-direction:column;
 }
@@ -40,4 +45,37 @@ a{
 }
 .added{
     background: green;
+}
+.table__result{
+    margin: 10px;
+}
+.table__result{
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+}
+/* }
+.table__result tr[data-id]{
+    display: flex;
+} */
+.hide{
+    display: none;
+}
+.echo{
+   display: flex;
+   flex-direction: column;
+   background:silver;
+}
+
+aside {width: 290px; background: #1b232b; min-height: 100vh; color: #fff; position: fixed; left: 0; top: 0}
+.wrap {padding: 50px 30px}
+.copyright {font-size: 12px; font-weight: bold; position: absolute; bottom: 0}
+.copyright span {font-size: 11px; color: #5f7183}
+
+table td:first-of-type {min-width: 280px;}
+table td:last-of-type {font-size: 12px}
+table td {border: 1px solid #e8e8e8}
+table th, table td {text-align: left; padding: 0 10px}
+.active{
+    background:red;
 }

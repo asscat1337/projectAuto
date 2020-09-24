@@ -1,0 +1,35 @@
+body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    background: blue;
+}
+.auth__wrapper{
+    position: fixed;
+    top: 25%;
+    left: 45%;
+    background: #ffffff;
+    border: 1px solid black;
+}
+.form__auth{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-content: center;
+}
+.form__auth input{
+    margin:0 5px 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    width: 85%;
+}
+.auth__content{
+    height: 300px;
+    width: 300px;
+}
+.btnOk{
+    margin: 10px;
+}
+label{
+    margin-left: 20px; 
+}
